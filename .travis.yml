@@ -4,6 +4,7 @@ node_js:
 
 install:
   - npm install newman
+  - npm install got
 
 before_script:
   - node --version
