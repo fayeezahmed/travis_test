@@ -9,6 +9,7 @@ const shell = require('shelljs'),
 console.log(`Fetching Git commit hash...`);
 
 const gitCommitRet = shell.exec('git rev-parse HEAD', {
+  pwd: path.join(__dirname, '..')
   cwd: path.join(__dirname, '..')
 });
 
