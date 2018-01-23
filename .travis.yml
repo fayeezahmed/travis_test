@@ -10,8 +10,5 @@ before_script:
   - npm --version
   - node_modules/.bin/newman --version
 
-script:
-  - npm run test-ci
-
 after_success:
   - node scripts/triggerDocSiteBuild.js
