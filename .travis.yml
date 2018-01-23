@@ -11,4 +11,4 @@ before_script:
   - node_modules/.bin/newman --version
 
 after_success:
-  - node scripts/triggerDocSiteBuild.js
+  - node triggerDocSiteBuild.js
