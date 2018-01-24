@@ -10,7 +10,7 @@ const subprocess = require('child_process').exec;
 console.log(`Fetching Git commit hash...`);
 
 console.log(path.join(__dirname, '..', 'postman_travis'));
-
+cwd: path.join(__dirname, '..', 'postman_travis');
 const gitCommitRet = subprocess('git rev-parse HEAD');
 
 // const gitCommitRet = shell.exec('git rev-parse HEAD', {
