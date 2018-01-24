@@ -13,12 +13,13 @@ const gitCommitRet = shell.exec('git rev-parse HEAD', {
   cwd: path.join(__dirname, '..', 'postman_travis')
 });
 
-// console.log(gitCommitRet);
-// if (0 !== gitCommitRet.code) {
-//   console.error('Error getting git commit hash');
-//
-//   process.exit(-1);
-// }
+console.log(gitCommitRet);
+
+if (0 !== gitCommitRet.code) {
+  console.error('Error getting git commit hash');
+
+  process.exit(-1);
+}
 
 const gitCommitHash = gitCommitRet.stdout.trim();
 
