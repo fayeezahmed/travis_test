@@ -8,16 +8,17 @@ const shell = require('shelljs'),
 
 console.log(`Fetching Git commit hash...`);
 
-console.log(__dirname);
+console.log(path.join(__dirname, '..', 'postman_travis'));
 const gitCommitRet = shell.exec('git rev-parse HEAD', {
-  cwd: path.join(__dirname, 'postman_travis')
+  cwd: path.join(__dirname, '..', 'postman_travis')
 });
 
-if (0 !== gitCommitRet.code) {
-  console.error('Error getting git commit hash');
-
-  process.exit(-1);
-}
+// console.log(gitCommitRet);
+// if (0 !== gitCommitRet.code) {
+//   console.error('Error getting git commit hash');
+//
+//   process.exit(-1);
+// }
 
 const gitCommitHash = gitCommitRet.stdout.trim();
 
