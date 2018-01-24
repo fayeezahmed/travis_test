@@ -11,13 +11,14 @@ console.log(`Fetching Git commit hash...`);
 
 console.log(path.join(__dirname, '..', 'postman_travis'));
 cwd: path.join(__dirname, '..', 'postman_travis');
-const gitCommitRet = subprocess('ls');
+const gitCommitRet = subprocess('ls', (error, stdout, stderr) => {
+  console.log(`stdout: ${stdout}`);
+  console.log(`stderr: ${stderr}`);
+});
 
 // const gitCommitRet = shell.exec('git rev-parse HEAD', {
 //   cwd: path.join(__dirname, '..', 'postman_travis')
 // });
-
-console.log(gitCommitRet);
 
 if (0 !== gitCommitRet.code) {
   console.error('Error getting git commit hash');
