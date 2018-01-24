@@ -10,7 +10,7 @@ console.log(`Fetching Git commit hash...`);
 
 console.log(__dirname);
 const gitCommitRet = shell.exec('git rev-parse HEAD', {
-  cwd: path.join(__dirname, '..')
+  cwd: path.join(__dirname, 'postman_travis')
 });
 
 if (0 !== gitCommitRet.code) {
