@@ -10,7 +10,7 @@ const subprocess = require('child_process').exec;
 console.log(`Fetching Git commit hash...`);
 
 console.log(path.join(__dirname, '..', 'postman_travis'));
-cwd: path.join(__dirname, '..', 'postman_travis');
+// cwd: path.join(__dirname, '..', 'postman_travis');
 const gitCommitRet = subprocess('ls', (error, stdout, stderr) => {
   console.log(`stdout: ${stdout}`);
   console.log(`stderr: ${stderr}`);
