@@ -11,7 +11,7 @@ console.log(`Fetching Git commit hash...`);
 
 console.log(path.join(__dirname, '..', 'postman_travis'));
 // git rev-parse HEAD
-const gitCommitRet = shell.exec('git status', {
+const gitCommitRet = shell.exec('ls', {
   cwd: path.join(__dirname, '..', 'postman_travis')
 });
 
