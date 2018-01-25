@@ -17,11 +17,11 @@ post_headers = {
     "Authorization": "token {}".format(os.environ['TRAVIS_ACCESS_TOKEN']),
 }
 
-post_body = '''{
+post_body = {
 "request": {
-"message":Trigger build at fayeezahmed/postman_travis commit: {}
+"message":"Trigger build at fayeezahmed/postman_travis commit: {}".format(git_commit_hash)
 "branch":"master"
-}}'''.format(git_commit_hash)
+}}
 
 url = 'https://api.travis-ci.org/repo/waigo%2Fwaigo.github.io/requests'
 
