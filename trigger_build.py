@@ -19,7 +19,7 @@ post_headers = {
 
 post_body = {
 "request": {
-"message":"Trigger build at fayeezahmed/postman_travis commit: {}".format(git_commit_hash)
+"message":"Trigger build at fayeezahmed/postman_travis commit: {}".format(git_commit_hash),
 "branch":"master"
 }}
 
