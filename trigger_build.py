@@ -27,4 +27,5 @@ post_body = {
 url = 'https://api.travis-ci.org/repo/fayeezahmed%2Fpostman_travis/requests'
 
 # req = urllib.request.Request(url, post_body, headers)
-requests.post(url, headers=post_headers, data=post_body)
+req = requests.post(url, headers=post_headers, data=post_body)
+print(req)
