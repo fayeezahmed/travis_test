@@ -2,6 +2,7 @@
 
 import os
 import urllib
+import requests
 import subprocess
 
 os.chdir('..')
@@ -25,4 +26,5 @@ post_body = {
 
 url = 'https://api.travis-ci.org/repo/waigo%2Fwaigo.github.io/requests'
 
-req = urllib.request.Request(url, post_body, headers)
+# req = urllib.request.Request(url, post_body, headers)
+req = requests.post(url, headers=post_headers, body=post_body)
