@@ -14,7 +14,7 @@ post_headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
     "Travis-API-Version": "3",
-    "Authorization": "token {}".format(os.environ['TRAVIS_API_TOKEN']),
+    "Authorization": "token {}".format(os.environ['TRAVIS_ACCESS_TOKEN']),
 }
 
 post_body = '''{
