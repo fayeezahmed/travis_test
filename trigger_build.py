@@ -4,6 +4,6 @@ import os
 import subprocess
 
 os.chdir('..')
-os.chdir('postman_travis')
 subprocess.run(['ls', '-l'])
+os.chdir('postman_travis')
 subprocess.run(['git', 'rev-parse', 'HEAD'])
