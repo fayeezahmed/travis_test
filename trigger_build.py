@@ -24,7 +24,7 @@ post_body = {
 "branch":"master"
 }}
 
-url = 'https://api.travis-ci.org/repo/waigo%2Fwaigo.github.io/requests'
+url = 'https://api.travis-ci.org/repo/fayeezahmed%2Fpostman_travis/requests'
 
 # req = urllib.request.Request(url, post_body, headers)
 req = requests.post(url, headers=post_headers, data=post_body)
