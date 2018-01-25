@@ -6,7 +6,7 @@ import subprocess
 os.chdir('..')
 subprocess.run(['ls', '-l'])
 
-subprocess.run('git', 'clone', 'https://github.com/fayeezahmed/postman_travis.git')
+subprocess.run(['git', 'clone', 'https://github.com/fayeezahmed/postman_travis.git'])
 
 os.chdir('postman_travis')
 
