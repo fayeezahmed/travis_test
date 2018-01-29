@@ -37,7 +37,7 @@ def trigger_build(git_url=""):
         "Authorization": "token {}".format(os.environ["TRAVIS_ACCESS_TOKEN"]),
     }
 
-    post_body = '{"request": {"message":"Trigger build at fayeezahmed/postman_travis commit: {}}","branch":"master"}}'.format(git_commit_hash)
+    post_body = '{{"request": {{"message":"Trigger build at fayeezahmed/postman_travis commit: {0}}}","branch":"master"}}}}'.format(git_commit_hash)
 
     url = "https://api.travis-ci.org/repo/{0}%2F{1}/requests".format(group_repo_name, repo_name)
 
