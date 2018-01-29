@@ -2,35 +2,45 @@
 
 import os
 import urllib
-import json
 import requests
 import subprocess
 
-os.chdir('..')
-subprocess.run(['ls', '-l'])
 
-subprocess.run(['git', 'clone', 'https://github.com/fayeezahmed/postman_travis.git'])
-os.chdir('postman_travis')
-git_commit_hash = subprocess.run(['git', 'rev-parse', 'HEAD'])
-print("==TRAVIS ACCESS TOKEN==")
-print(os.environ['TRAVIS_ACCESS_TOKEN'])
-post_headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Travis-API-Version": "3",
-    "Authorization": "token {}".format(os.environ['TRAVIS_ACCESS_TOKEN']),
-}
-print(post_headers)
- # e458c3231b264d9c53750f202d26ed6a460b936e
-post_body = '{"request": {"message":"Trigger build at fayeezahmed/postman_travis commit: e458c3231b264d9c53750f202d26ed6a460b936e","branch":"master"}}'
-print("===POST BODY===")
-print(post_body)
+def trigger_build(git_url=""):
+    """
+    This function triggers a build on travis on the specified git repository. To be used within other repositories' travis scripts.
 
-json_header = json.dumps(post_headers)
-json_body = json.dumps(post_body)
-url = 'https://api.travis-ci.org/repo/fayeezahmed%2Fpostman_travis/requests'
+    @param git_url: this is the git url, in the format repo_account/repo_name
+    """
 
-# req = urllib.request.Request(url, post_body, headers)
-req = requests.post(url, headers=post_headers, data=post_body)
-print(req.content)
-print(dir(req))
+    try:
+        if not git_url:
+            raise ValueError("Please specify a git url in the following format https://github.com/repo_account/repo_name.git")
+    except ValueError as e:
+        print(e)
+
+    os.chdir("..")
+    subprocess.run(["git", "clone", "https://github.com/{0}.git".format(git_url)])
+
+    git_url_split = git_url.split("/")
+    group_repo_name = git_url_split[0]
+    repo_name = git_url_split[1]
+
+    os.chdir(repo_name)
+
+    git_commit_hash = subprocess.run(["git", "rev-parse", "HEAD"])
+
+    post_headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Travis-API-Version": "3",
+        "Authorization": "token {}".os.environ["TRAVIS_ACCESS_TOKEN"],
+    }
+
+    post_body = '{"request": {"message":"Trigger build at fayeezahmed/postman_travis commit: {}}","branch":"master"}}'.format(git_commit_hash)
+
+    url = "https://api.travis-ci.org/repo/{0}%2F{1}/requests".format(group_repo_name, repo_name)
+
+    req = requests.post(url, headers=post_headers, data=post_body)
+
+trigger_build("fayeezahmed/postman_travis")
