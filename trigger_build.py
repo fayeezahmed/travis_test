@@ -34,7 +34,7 @@ def trigger_build(git_url=""):
         "Content-Type": "application/json",
         "Accept": "application/json",
         "Travis-API-Version": "3",
-        "Authorization": "token {}".os.environ["TRAVIS_ACCESS_TOKEN"],
+        "Authorization": "token {}".format(os.environ["TRAVIS_ACCESS_TOKEN"]),
     }
 
     post_body = '{"request": {"message":"Trigger build at fayeezahmed/postman_travis commit: {}}","branch":"master"}}'.format(git_commit_hash)
