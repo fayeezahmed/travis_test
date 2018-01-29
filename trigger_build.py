@@ -26,7 +26,8 @@ post_body = {
 "message":"Trigger build at fayeezahmed/postman_travis commit: e458c3231b264d9c53750f202d26ed6a460b936e",
 "branch":"master"
 }}
-
+print("===POST BODY===")
+print(post_body)
 url = 'https://api.travis-ci.org/repo/fayeezahmed%2Fpostman_travis/requests'
 
 # req = urllib.request.Request(url, post_body, headers)
