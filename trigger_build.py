@@ -19,6 +19,7 @@ post_headers = {
     "Travis-API-Version": "3",
     "Authorization": "token {}".format(os.environ['TRAVIS_ACCESS_TOKEN']),
 }
+print(post_headers)
  # e458c3231b264d9c53750f202d26ed6a460b936e
 post_body = {
 "request": {
