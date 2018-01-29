@@ -2,6 +2,7 @@
 
 import os
 import urllib
+import json
 import requests
 import subprocess
 
@@ -28,9 +29,12 @@ post_body = {
 }}
 print("===POST BODY===")
 print(post_body)
+
+json_header = json.dumps(post_headers)
+json_body = json.dumps(post_body)
 url = 'https://api.travis-ci.org/repo/fayeezahmed%2Fpostman_travis/requests'
 
 # req = urllib.request.Request(url, post_body, headers)
-req = requests.post(url, headers=post_headers, data=post_body)
+req = requests.post(url, headers=json_header, data=json_body)
 print(req.content)
 print(dir(req))
